@@ -122,7 +122,7 @@ NLP技术发展围绕**解决序列数据处理痛点**展开，核心节点与�
 
 - 适用场景：短序列文本的序列建模。
 
-![RNNs](../images/1-1.RNN.png)
+![RNNs](images/1-1.RNN.png)
 <p align="center">图1 不同场景下的RNN结构原理 
 
 **（2）长短期记忆网络（LSTM，1997）**
@@ -133,7 +133,7 @@ NLP技术发展围绕**解决序列数据处理痛点**展开，核心节点与�
 
 - 地位：成为RNN的主流改进版本，长期为NLP序列建模的SOTA方法。
 
-![LSTM](../images/1-2.LSTM.png)
+![LSTM](images/1-2.LSTM.png)
 <p align="center">图2 LSTM结构原理
 
 **（3） Word2vec与RNN/LSTM对比**
@@ -157,7 +157,7 @@ NLP技术发展围绕**解决序列数据处理痛点**展开，核心节点与�
 
  - 核心概念：**Query（Q，查询）、Key（K，键）、Value（V，值）**——将文本中的每个token通过线性变换，分别映射为Q、K、V三个向量，通过Q与K的相似度，为每个V分配权重，实现token间的关联建模。如下图所示例子：
   
-    ![QKV](../images/1-3.QKV.png)
+    ![QKV](images/1-3.QKV.png)
     <p align="center">图3 Q、K、V矩阵的含义与计算
 
  - 核心计算：缩放点积注意力——公式： $softmax\left(\frac{Q K^{T}}{\sqrt{d_{k}}}\right) V$
@@ -174,7 +174,7 @@ NLP技术发展围绕**解决序列数据处理痛点**展开，核心节点与�
 
 - 类比：类似计算机视觉中的**多卷积核**，从不同角度提取特征，提升模型表达能力。
 
-![MHA](../images/1-4.MHA.png)
+![MHA](images/1-4.MHA.png)
 <p align="center">图4 多头注意力机制
 
 ### 3.6. Transformer整体架构：编码器-解码器（Encoder-Decoder）
@@ -237,7 +237,7 @@ Transformer由**编码器（Encoder）和解码器（Decoder）两部分组成�
 
 ### 3.6. Transformer端到端案例
 
-![Example](../images/Example.gif)
+![Example](images/Example.gif)
 
 以英文「A cute teddy bear is reading.」→法语「Un ours en peluche mignon lit.」为例，完整梳理Transformer的工作流程，核心为编码器编码+解码器自回归生成：
 

@@ -73,7 +73,7 @@
 
 （4）优势：**捕捉相对位置信息（核心）**；可扩展到任意长度的序列，无需重新训练，解决可学习嵌入的核心问题；三角函数的周期性使模型能捕捉序列的**局部和全局位置规律**。
 
-![HardcodedPE](../images/2-1.HardcodedPE.png)
+![HardcodedPE](images/2-1.HardcodedPE.png)
 <p align="center">图1 硬编码优势
 
 > 通过**三角函数差角公式**推导，可证明**两个位置嵌入的内积仅与相对位置有关**）：
@@ -105,7 +105,7 @@
 
 当前大语言模型（如LLaMA、GPT-4）的标配位置编码，**无需添加嵌入向量，直接通过旋转矩阵将位置信息融入Q/K向量**，完美捕捉相对位置。
 
-![RoPE](../images/2-2.RoPE.png)
+![RoPE](images/2-2.RoPE.png)
 <p align="center">图2 RoPE思想
 
 （1）核心思路：对 $Q/K$ 的**每一对二维特征**，用**与位置相关的旋转矩阵**进行旋转，位置不同，旋转角度不同，最终让 $Q-K$ 的内积仅与**相对位置**有关。
@@ -152,14 +152,14 @@ Transformer中所有层都包含**残差连接**： $x + \text{SubLayer}(x)$ （
 - 位于残差连接**之后**，输出结果为$\text{Output} = \text{LayerNorm}(x + \text{SubLayer}(x))$。
 - 作为原始Transformer使用，缺点是深层模型训练不稳定，易梯度消失；需要精心调参（如学习率、初始化），只能应用于早期Transformer、小模型。
 
-![PostNorm](../images/2-3.Post-Norm.png)
+![PostNorm](images/2-3.Post-Norm.png)
 <p align="center">图3 后归一化流程图
 
 （2）**Pre-Norm**（前归一化）
 - 位于残差连接**之前**，输出结果为$\text{Output} = x + \text{SubLayer}(\text{LayerNorm}(x))$。
 - 作为**目前主流方案**，优点是训练稳定性极强，适配深层模型；无需精细调参；收敛速度更快，广泛应用于大语言模型（GPT、LLaMA）、BERT变体。
 
-![PreNorm](../images/2-4.Pre-Norm.png)
+![PreNorm](images/2-4.Pre-Norm.png)
 <p align="center">图4 前归一化流程图
 
 ### 3.3. 轻量化优化：RMSNorm
@@ -213,7 +213,7 @@ Transformer中所有层都包含**残差连接**： $x + \text{SubLayer}(x)$ （
 - 参数：K/V的参数数量为 $2 \times G \times d_{model} \times d_k$ ，介于MHA和MQA之间；
 - 特点：**目前主流方案**，在效率和效果之间取得最优平衡，如GPT-3、PaLM均使用GQA。
 
-![MQA+GQA](../images/2-5.MQA+GQA.png)
+![MQA+GQA](images/2-5.MQA+GQA.png)
 <p align="center">图5 注意力头共享
 
 ###### 核心对比表
@@ -240,7 +240,7 @@ Transformer衍生模型可按**编码器/解码器的组合方式**分为三大�
 
 ## 6. BERT（Encoder-only模型代表）
 
-![PreNorm](../images/2-6.BERT.png)
+![BERT](images/2-6.BERT.png)
 <p align="center">图6 BERT整体架构
 
 BERT（Bidirectional Encoder Representations from Transformers）是NLP发展的**里程碑模型**，开启了**预训练+微调**的范式。
@@ -358,7 +358,7 @@ BERT的模型规模由**三层超参数**决定：**编码器层数** $L$  **、
 
 （1）**核心步骤**（共6步）
 
-![Finetuning](../images/Finetuning.gif)
+![Finetuning](images/Finetuning.gif)
 <p align="center">图7 BERT微调流程
 
 1. **输入构造**：在情感分析句子前添加 $[CLS]$ ，末尾添加 $[SEP]$ ，用 $[PAD]$ 补全到固定长度（如512），得到标准输入序列：
